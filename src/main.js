@@ -1,4 +1,6 @@
 let fetch = (require('node-fetch'));
+
+
 let promise1 = fetch(
   'https://api.github.com/users/' + process.argv[2],
   {
@@ -18,13 +20,15 @@ let promise1 = fetch(
       console.log('There was a problem', responseObj.status);
     }
   } );
+
+
 let promise2 = fetch(
   'https://api.github.com/users/' + process.argv[2] + '/repos',
   {
     method: 'GET',
     headers: {
       Authorization: 'token ' + process.argv[3]
-  },
+      },
     body: '...'
   });
 
@@ -49,6 +53,7 @@ let promise2 = fetch(
                 Authorization: 'token ' + process.argv[3]
               },
               body: '...'
+            });
 
             promise3.then ( function responseHandler(response) {
               if (response.status > 199 && response.status < 300) {
